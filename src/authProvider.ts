@@ -16,56 +16,71 @@ export const authProvider: AuthBindings = {
       };
     }
 
-    const { data, status } = await strapiAuthHelper.login(email, password);
-    if (status === 200) {
-      localStorage.setItem(TOKEN_KEY, data.jwt);
+    let errorMessage = null;
 
-      // set header axios instance
-      axiosInstance.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${data.jwt}`;
+    try {
+      const { data, status } = await strapiAuthHelper.login(email, password);
+      
+      if (status === 200) {
+        localStorage.setItem(TOKEN_KEY, data.jwt);
 
-      return {
-        success: true,
-        redirectTo: "/",
-      };
+        // set header axios instance
+        axiosInstance.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${data.jwt}`;
+
+        return {
+          success: true,
+          redirectTo: "/",
+        };
+      }
+    } catch (error) {
+      errorMessage = error.response?.data?.error?.message
     }
+
     return {
       success: false,
       error: {
         message: "Login failed",
-        name: "Invalid email or password",
+        name: errorMessage || "Invalid email or password",
       },
     };
   },
   register: async ({ email, password }) => {
     const url = API_URL + '/api/auth/local/register';
 
-    const { data, status } = await axios.post(url, {
-      username: email,
-      email: email,
-      password: password,
-    });
+    let errorMessage = null;
 
-    if (status === 200) {
-      localStorage.setItem(TOKEN_KEY, data.jwt);
+    try {
+      const { data, status } = await axios.post(url, {
+        username: email,
+        email: email,
+        password: password,
+      });
 
-      // set header axios instance
-      axiosInstance.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${data.jwt}`;
+      if (status === 200) {
+        localStorage.setItem(TOKEN_KEY, data.jwt);
 
-      return {
-        success: true,
-        redirectTo: "/",
-      };
+        // set header axios instance
+        axiosInstance.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${data.jwt}`;
+
+        return {
+          success: true,
+          redirectTo: "/",
+        };
+
+      }
+    } catch (error) {
+      errorMessage = error.response?.data?.error?.message
     }
 
     return {
       success: false,
       error: {
         message: "Registration failed",
-        name: "There was an error creating your account",
+        name: errorMessage || "There was an error creating your account",
       },
     };
   },
