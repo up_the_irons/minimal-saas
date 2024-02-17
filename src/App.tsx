@@ -127,6 +127,7 @@ function App() {
                       element={
                         <AuthPage
                           type="login"
+                          title=""
                         />
                       }
                     />
