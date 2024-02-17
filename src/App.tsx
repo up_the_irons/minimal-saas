@@ -83,7 +83,10 @@ function App() {
                       </Authenticated>
                     }
                   >
-                    
+                    <Route
+                      index
+                      element={<NavigateToResource resource="categories"/>}
+                    />
                     <Route path="/categories">
                       <Route index element={<CategoryList />} />
                       <Route path="create" element={<CategoryCreate />} />
