@@ -11,7 +11,7 @@ export const CategoryEdit: React.FC<IResourceComponentsProps> = () => {
       <Form {...formProps} layout="vertical">
         <Form.Item
           label={"Title"}
-          name={["title"]}
+          name={["Name"]}
           rules={[
             {
               required: true,

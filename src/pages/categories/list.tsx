@@ -17,11 +17,12 @@ export const CategoryList: React.FC<IResourceComponentsProps> = () => {
   return (
     <List>
       <Table {...tableProps} rowKey="id">
-        <Table.Column dataIndex="id" title={"ID"} />
-        <Table.Column dataIndex="title" title={"title"} />
+        <Table.Column dataIndex="id" title={"ID"} width="5%"/>
+        <Table.Column dataIndex="Name" title={"Name"} />
         <Table.Column
           title={"Actions"}
           dataIndex="actions"
+          width="5%"
           render={(_, record: BaseRecord) => (
             <Space>
               <EditButton hideText size="small" recordItemId={record.id} />
