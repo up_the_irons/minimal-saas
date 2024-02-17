@@ -18,7 +18,7 @@ export const CategoryList: React.FC<IResourceComponentsProps> = () => {
     <List>
       <Table {...tableProps} rowKey="id">
         <Table.Column dataIndex="id" title={"ID"} width="5%"/>
-        <Table.Column dataIndex="Name" title={"Name"} />
+        <Table.Column dataIndex="title" title={"Name"} />
         <Table.Column
           title={"Actions"}
           dataIndex="actions"

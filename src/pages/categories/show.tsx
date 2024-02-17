@@ -16,7 +16,7 @@ export const CategoryShow: React.FC<IResourceComponentsProps> = () => {
       <Title level={5}>{"ID"}</Title>
       <NumberField value={record?.id ?? ""} />
       <Title level={5}>{"Name"}</Title>
-      <TextField value={record?.Name} />
+      <TextField value={record?.title} />
     </Show>
   );
 };
