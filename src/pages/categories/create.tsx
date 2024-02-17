@@ -10,8 +10,8 @@ export const CategoryCreate: React.FC<IResourceComponentsProps> = () => {
     <Create saveButtonProps={saveButtonProps}>
       <Form {...formProps} layout="vertical">
         <Form.Item
-          label={"Title"}
-          name={["title"]}
+          label={"Name"}
+          name={["Name"]}
           rules={[
             {
               required: true,
