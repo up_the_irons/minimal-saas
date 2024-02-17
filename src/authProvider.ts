@@ -38,6 +38,37 @@ export const authProvider: AuthBindings = {
       },
     };
   },
+  register: async ({ email, password }) => {
+    const url = API_URL + '/api/auth/local/register';
+
+    const { data, status } = await axios.post(url, {
+      username: email,
+      email: email,
+      password: password,
+    });
+
+    if (status === 200) {
+      localStorage.setItem(TOKEN_KEY, data.jwt);
+
+      // set header axios instance
+      axiosInstance.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${data.jwt}`;
+
+      return {
+        success: true,
+        redirectTo: "/",
+      };
+    }
+
+    return {
+      success: false,
+      error: {
+        message: "Registration failed",
+        name: "There was an error creating your account",
+      },
+    };
+  },
   logout: async () => {
     localStorage.removeItem(TOKEN_KEY);
     return {

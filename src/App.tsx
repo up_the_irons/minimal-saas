@@ -151,7 +151,7 @@ function App() {
                     />
                     <Route
                       path="/register"
-                      element={<AuthPage type="register" />}
+                      element={<AuthPage type="register" title="" />}
                     />
                     <Route
                       path="/forgot-password"
