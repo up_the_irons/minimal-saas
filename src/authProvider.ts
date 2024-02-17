@@ -34,7 +34,7 @@ export const authProvider: AuthBindings = {
           redirectTo: "/",
         };
       }
-    } catch (error) {
+    } catch (error: any) {
       errorMessage = error.response?.data?.error?.message
     }
 
@@ -72,7 +72,7 @@ export const authProvider: AuthBindings = {
         };
 
       }
-    } catch (error) {
+    } catch (error: any) {
       errorMessage = error.response?.data?.error?.message
     }
 
