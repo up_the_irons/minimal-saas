@@ -6,6 +6,7 @@ import {
   ErrorComponent,
   ThemedLayoutV2,
   ThemedSiderV2,
+  ThemedTitleV2,
   useNotificationProvider,
 } from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
@@ -84,7 +85,7 @@ function App() {
                         fallback={<CatchAllNavigate to="/login" />}
                       >
                         <ThemedLayoutV2
-                          Title={() => <strong>My Dashboard</strong>}
+                          Title={(props) => <ThemedTitleV2 {...props} text='My Dashboard' icon=''/>}
                           Header={() => <Header sticky />}
                           Sider={(props) => <ThemedSiderV2 {...props} fixed />}
                         >
