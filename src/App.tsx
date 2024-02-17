@@ -37,6 +37,10 @@ import {
   CategoryShow,
 } from "./pages/categories";
 
+import {
+  GithubOutlined,
+} from "@ant-design/icons";
+
 function App() {
   return (
     <BrowserRouter>
@@ -128,6 +132,20 @@ function App() {
                         <AuthPage
                           type="login"
                           title=""
+                          providers={[
+                            {
+                              name: 'github',
+                              icon: (
+                                <GithubOutlined
+                                  style={{
+                                    fontSize: 24,
+                                    lineHeight: 0,
+                                  }}
+                                />
+                              ),
+                              label: "Sign in with GitHub"
+                            }
+                          ]}
                         />
                       }
                     />
