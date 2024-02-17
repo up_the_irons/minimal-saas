@@ -84,6 +84,7 @@ function App() {
                         fallback={<CatchAllNavigate to="/login" />}
                       >
                         <ThemedLayoutV2
+                          Title={() => <strong>My Dashboard</strong>}
                           Header={() => <Header sticky />}
                           Sider={(props) => <ThemedSiderV2 {...props} fixed />}
                         >
@@ -125,12 +126,6 @@ function App() {
                       element={
                         <AuthPage
                           type="login"
-                          formProps={{
-                            initialValues: {
-                              email: "demo@refine.dev",
-                              password: "demodemo",
-                            },
-                          }}
                         />
                       }
                     />
