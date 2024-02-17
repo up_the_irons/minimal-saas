@@ -7,7 +7,15 @@ export const axiosInstance = axios.create();
 const strapiAuthHelper = AuthHelper(API_URL + "/api");
 
 export const authProvider: AuthBindings = {
-  login: async ({ email, password }) => {
+  login: async ({ email, password, remember, providerName }) => {
+    if (providerName === "github") {
+      window.location.href =
+        API_URL + '/api/connect/github';
+      return {
+        success: true,
+      };
+    }
+
     const { data, status } = await strapiAuthHelper.login(email, password);
     if (status === 200) {
       localStorage.setItem(TOKEN_KEY, data.jwt);
