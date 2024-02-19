@@ -8,9 +8,10 @@ const strapiAuthHelper = AuthHelper(API_URL + "/api");
 
 export const authProvider: AuthBindings = {
   login: async ({ email, password, remember, providerName }) => {
-    if (providerName === "github") {
+    // If user selected an OAuth provider, redirect them and return
+    if (providerName) {
       window.location.href =
-        API_URL + '/api/connect/github';
+        API_URL + '/api/connect/' + providerName;
       return {
         success: true,
       };

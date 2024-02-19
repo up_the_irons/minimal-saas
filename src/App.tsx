@@ -33,6 +33,10 @@ import {
 } from "./pages/categories";
 
 import {
+  OAuthRedirect
+} from './oauthRedirect';
+
+import {
   GithubOutlined,
 } from "@ant-design/icons";
 
@@ -128,6 +132,7 @@ function App() {
                         />
                       }
                     />
+                    <Route path='/connect/:providerName/redirect' element={<OAuthRedirect />}/>
                     <Route
                       path="/register"
                       element={<AuthPage type="register" title="" />}
