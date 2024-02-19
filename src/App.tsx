@@ -38,6 +38,7 @@ import {
 
 import {
   GithubOutlined,
+  DiscordOutlined
 } from "@ant-design/icons";
 
 function App() {
@@ -121,12 +122,22 @@ function App() {
                               icon: (
                                 <GithubOutlined
                                   style={{
-                                    fontSize: 24,
-                                    lineHeight: 0,
+                                    fontSize: 20,
                                   }}
                                 />
                               ),
                               label: "Sign in with GitHub"
+                            },
+                            {
+                              name: 'discord',
+                              icon: (
+                                <DiscordOutlined
+                                  style={{
+                                    fontSize: 20,
+                                  }}
+                                />
+                              ),
+                              label: "Sign in with Discord"
                             }
                           ]}
                         />
