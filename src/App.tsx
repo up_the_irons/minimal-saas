@@ -150,7 +150,7 @@ function App() {
                     />
                     <Route
                       path="/forgot-password"
-                      element={<AuthPage type="forgotPassword" />}
+                      element={<AuthPage type="forgotPassword" title=""/>}
                     />
                   </Route>
                 </Routes>
