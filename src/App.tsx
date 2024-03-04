@@ -33,6 +33,12 @@ import {
 } from "./pages/categories";
 
 import {
+  InstanceEdit,
+  InstanceList,
+  InstanceShow,
+} from "./pages/instances";
+
+import {
   OAuthRedirect
 } from './oauthRedirect';
 
@@ -53,6 +59,15 @@ function App() {
                 notificationProvider={useNotificationProvider}
                 routerProvider={routerBindings}
                 resources={[
+                  {
+                    name: "instances",
+                    list: "/instances",
+                    edit: "/instances/edit/:id",
+                    show: "/instances/show/:id",
+                    meta: {
+                      canDelete: false,
+                    },
+                  },
                   {
                     name: "categories",
                     list: "/categories",
@@ -90,8 +105,13 @@ function App() {
                   >
                     <Route
                       index
-                      element={<NavigateToResource resource="categories"/>}
+                      element={<NavigateToResource resource="instances"/>}
                     />
+                    <Route path="/instances">
+                      <Route index element={<InstanceList />} />
+                      <Route path="edit/:id" element={<InstanceEdit />} />
+                      <Route path="show/:id" element={<InstanceShow />} />
+                    </Route>
                     <Route path="/categories">
                       <Route index element={<CategoryList />} />
                       <Route path="create" element={<CategoryCreate />} />
