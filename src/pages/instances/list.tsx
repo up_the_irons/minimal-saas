@@ -6,8 +6,9 @@ import {
   useTable,
 } from "@refinedev/antd";
 import { BaseRecord, IResourceComponentsProps } from "@refinedev/core";
-import { Space, Table } from "antd";
+import { Space, Table, Button } from "antd";
 import React from "react";
+import { Link  } from "react-router-dom";
 
 import {
   ControlButton
@@ -19,6 +20,7 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
   });
 
   return (
+    <>
     <List>
       <Table {...tableProps} rowKey="id">
         <Table.Column dataIndex="id" title={"ID"} width="5%"/>
@@ -42,5 +44,10 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
         />
       </Table>
     </List>
+
+    <Link to="/pricing">
+      <Button type="primary">Order New Instance</Button>
+    </Link>
+    </>
   );
 };

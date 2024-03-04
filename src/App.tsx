@@ -39,6 +39,10 @@ import {
 } from "./pages/instances";
 
 import {
+  PricingPage,
+} from "./pages/instances/pricing_page";
+
+import {
   OAuthRedirect
 } from './oauthRedirect';
 
@@ -66,16 +70,6 @@ function App() {
                     show: "/instances/show/:id",
                     meta: {
                       canDelete: false,
-                    },
-                  },
-                  {
-                    name: "categories",
-                    list: "/categories",
-                    create: "/categories/create",
-                    edit: "/categories/edit/:id",
-                    show: "/categories/show/:id",
-                    meta: {
-                      canDelete: true,
                     },
                   },
                 ]}
@@ -117,6 +111,9 @@ function App() {
                       <Route path="create" element={<CategoryCreate />} />
                       <Route path="edit/:id" element={<CategoryEdit />} />
                       <Route path="show/:id" element={<CategoryShow />} />
+                    </Route>
+                    <Route path="/pricing">
+                      <Route index element={<PricingPage />} />
                     </Route>
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
