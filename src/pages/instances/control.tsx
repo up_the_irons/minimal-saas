@@ -1,3 +1,7 @@
+import {
+  EditButtonProps,
+} from "@refinedev/antd";
+
 import React from 'react';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown, Flex } from 'antd';
@@ -18,7 +22,7 @@ const items = [
 
 ];
 
-export const ControlButton = ({ recordItemId }) => {
+export const ControlButton: React.FC<EditButtonProps> = ({ recordItemId }) => {
   const { open, close } = useNotification();
   const axiosInstance = axios.create();
 
