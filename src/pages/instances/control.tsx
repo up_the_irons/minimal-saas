@@ -3,17 +3,23 @@ import type { MenuProps } from 'antd';
 import { Button, Dropdown, Flex } from 'antd';
 
 const onMenuClick: MenuProps['onClick'] = (e) => {
-  console.log('click', e);
+  const clickedItem = items.find(item => item.key === e.key);
+  if (clickedItem) {
+    console.log('Clicked item:', clickedItem);
+    console.log('Clicked mode:', clickedItem.mode);
+  }
 };
 
 const items = [
   {
     key: '1',
     label: 'Production Mode',
+    mode: 'production',
   },
   {
     key: '2',
     label: 'Development Mode',
+    mode: 'development'
   },
 
 ];
