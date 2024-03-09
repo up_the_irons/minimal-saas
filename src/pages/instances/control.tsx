@@ -4,7 +4,7 @@ import {
 
 import React from 'react';
 import type { MenuProps } from 'antd';
-import { Button, Dropdown, Flex } from 'antd';
+import { Dropdown, Flex } from 'antd';
 import { useNotification  } from "@refinedev/core";
 
 import axios from "axios";
@@ -23,8 +23,7 @@ const items = [
 ];
 
 export const ControlButton: React.FC<EditButtonProps> = ({ recordItemId }) => {
-  const { open, close } = useNotification();
-  const axiosInstance = axios.create();
+  const { open } = useNotification();
 
   const onMenuClick: MenuProps['onClick'] = async (e) => {
     let mode = e.key;
@@ -40,11 +39,15 @@ export const ControlButton: React.FC<EditButtonProps> = ({ recordItemId }) => {
           }
         });
 
-        open?.({
-          type: "success",
-          message: "Please allow about 10 seconds for the operation to complete",
-          description: "Restarting your instance"
-        });
+        if (status === 200) {
+          open?.({
+            type: "success",
+            message: "Please allow about 10 seconds for the operation to complete",
+            description: "Restarting your instance"
+          });
+        } else {
+          throw new Error("Did not receive 200 status code");
+        }
       } catch (error: any) {
         let errorMessage = error.message
 
