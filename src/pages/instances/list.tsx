@@ -38,7 +38,7 @@ export const InstanceList: React.FC<IResourceComponentsProps> = () => {
               <ShowButton hideText size="small" recordItemId={record.id} />
               */
               }
-              <ControlButton />
+              <ControlButton recordItemId={record.id}/>
             </Space>
           )}
         />
